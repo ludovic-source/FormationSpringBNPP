@@ -41,4 +41,9 @@ public class CustomerManagementImpl implements CustomerManagement{
 		
 	}
 
+	@Override
+	public CustomerEntity findByName(String name) {
+		return customerRepository.findByName(name);
+	}
+
 }

@@ -11,5 +11,7 @@ public interface CustomerManagement {
 	Optional<CustomerEntity> findCustomer(Integer id);
 	
 	void update(CustomerEntity customer);
+	
+	CustomerEntity findByName(String name);
 
 }
