@@ -1,0 +1,6 @@
+com\bnpp\shop\application\management\CustomerManagementImpl.class
+com\bnpp\shop\application\management\ItemManagementImpl.class
+com\bnpp\shop\application\management\OrderManagement.class
+com\bnpp\shop\application\management\OrderManagementImpl.class
+com\bnpp\shop\application\management\CustomerManagement.class
+com\bnpp\shop\application\management\ItemManagement.class

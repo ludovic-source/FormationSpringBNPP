@@ -1,0 +1,4 @@
+com\bnpp\shop\infrastructure\test\repository\CustomerRepositoryTest.class
+com\bnpp\shop\infrastructure\test\SpringBootAppTest.class
+com\bnpp\shop\infrastructure\test\repository\ItemRepositoryImplTest.class
+com\bnpp\shop\infrastructure\test\repository\OrderRepositoryImplTest.class

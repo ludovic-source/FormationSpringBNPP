@@ -1,0 +1,3 @@
+com\bnpp\shop\infrastructure\repository\CustomerRepository.class
+com\bnpp\shop\infrastructure\repository\ItemRepository.class
+com\bnpp\shop\infrastructure\repository\OrderRepository.class

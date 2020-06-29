@@ -1,0 +1,4 @@
+com\bnpp\shop\domain\entity\ItemEntity.class
+com\bnpp\shop\domain\entity\BaseEntity.class
+com\bnpp\shop\domain\entity\CustomerEntity.class
+com\bnpp\shop\domain\entity\OrderEntity.class
