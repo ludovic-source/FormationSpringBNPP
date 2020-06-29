@@ -18,5 +18,7 @@ public interface OrderManagement {
 	void update(OrderEntity order);
 
 	Set<ItemEntity> findItemsByOrder(Integer idOrder);
+	
+	OrderEntity createOrderByCustomer(OrderEntity order);
 
 }

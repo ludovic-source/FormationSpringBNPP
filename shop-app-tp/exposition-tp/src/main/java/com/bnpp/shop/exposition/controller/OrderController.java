@@ -27,8 +27,20 @@ public class OrderController {
 	@ResponseStatus(HttpStatus.OK)
 	public void create(@RequestBody OrderEntity order){
 		if (order != null) {
+			System.out.println("Controller - order de début : " + order.getCustomer().getId());
 			orderManagement.create(order);
 		}
+	}
+	
+	@PostMapping("/create/bycustomer")
+	//@Produces(MediaType.APPLICATION_JSON)
+	public OrderEntity createOrderByCustomer(@RequestBody OrderEntity order){
+		System.out.println("coucou");
+		if (order != null) {
+			return orderManagement.createOrderByCustomer(order);
+			
+		}
+		return null;
 	}
 	
 	// rechercher un order à partir de l'id du customer

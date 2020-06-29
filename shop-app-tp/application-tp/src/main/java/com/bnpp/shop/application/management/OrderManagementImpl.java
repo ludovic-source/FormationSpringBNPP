@@ -1,5 +1,7 @@
 package com.bnpp.shop.application.management;
 
+import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.util.Optional;
 import java.util.Set;
 import java.util.function.Consumer;
@@ -24,9 +26,13 @@ public class OrderManagementImpl implements OrderManagement {
 	OrderRepository orderRepository;
 	
 	@Autowired
+	ItemManagement itemManagement;
+	
+	@Autowired
 	CustomerManagement customerManagement;
 	
 	private static Set<ItemEntity> itemsEntitiesFind;
+	private static ItemEntity itemFind;
 	
 	private static final Log logger = LogFactory.getLog(OrderManagementImpl.class);
 	
@@ -62,6 +68,42 @@ public class OrderManagementImpl implements OrderManagement {
 	
 	public static void lambdaFindItemsByIdOrder(OrderEntity orderEntity) {
 		itemsEntitiesFind = orderEntity.getItems();
+	}
+
+	@Override
+	public OrderEntity createOrderByCustomer(OrderEntity order) {
+		OrderEntity orderValide = order;
+		System.out.println("Management - order de début : " + order.getCustomer().getName());
+		
+		// verifier que le client existe et mettre à jour les infos clients de l'order, dont l'id
+		CustomerEntity customer = customerManagement.findByName(order.getCustomer().getName());
+		if (customer == null) {
+			System.out.println("client non trouvé");
+			return null;
+		}
+		orderValide.setCustomer(customer);
+		
+		// calculer le montant total de la commande
+		// --- pour chaque item, récupérer le prix dans la base, puis faire la somme de tous les items
+		BigDecimal totalOrder = new BigDecimal(0);
+		for (ItemEntity item : order.getItems()) {
+			System.out.println("item : " + item.getId());
+			Optional<ItemEntity> itemComplet = itemManagement.findItem(item.getId());
+			itemComplet.ifPresent(theItemComplet -> lambdaFindItemsByIdItem(theItemComplet));
+			BigDecimal prix = itemFind.getPrice();
+			totalOrder = totalOrder.add(prix);
+		}
+		orderValide.setTotal(totalOrder);
+		
+		// création de la commande dans la base, et récupération de l'id de commande via l'objet
+		OrderEntity orderCree = orderRepository.save(orderValide);
+		System.out.println("order créé : " + orderCree.getId());
+		
+		return orderCree;
+	}
+	
+	public static void lambdaFindItemsByIdItem(ItemEntity itemEntity) {
+		itemFind = itemEntity;
 	}
 
 }

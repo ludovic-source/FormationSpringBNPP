@@ -22,12 +22,11 @@ public class OrderEntity extends BaseEntity{
 	private BigDecimal total;
 	
 	@ManyToOne
-	@JsonManagedReference
-	//@JsonIgnore
+	//@JsonManagedReference
 	private CustomerEntity customer;
 	
 	@ManyToMany
-	@JsonManagedReference
+	//@JsonManagedReference			// utilisé pour éviter les boucles infinies
 	private Set<ItemEntity> items;	
 	
 	public Integer getId() {

@@ -22,7 +22,7 @@ public class ItemEntity {
 	private BigDecimal price;
 	
 	@ManyToMany(mappedBy = "items")
-	@JsonBackReference
+	@JsonBackReference					// utilisé pour éviter les boucles infinies
 	private Set<OrderEntity> orders;
 		
 	public Integer getId() {
