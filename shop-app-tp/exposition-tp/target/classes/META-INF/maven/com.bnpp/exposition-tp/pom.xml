@@ -51,6 +51,12 @@
 	      <artifactId>junit-jupiter-api</artifactId>
 	      <scope>test</scope>
     </dependency>
+    <!-- pour modifier l'entête CORS controle d'accès pour prise en compte via Angular -->
+    <dependency>
+	  <groupId>org.apache.httpcomponents</groupId>
+	  <artifactId>httpclient</artifactId>
+	  <version>4.5.12</version>
+	</dependency>
   </dependencies>
   
   <build>
