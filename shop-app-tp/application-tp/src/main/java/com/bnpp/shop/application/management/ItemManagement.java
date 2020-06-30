@@ -1,10 +1,10 @@
 package com.bnpp.shop.application.management;
 
+import java.util.List;
 import java.util.Optional;
-import java.util.Set;
 
 import com.bnpp.shop.domain.entity.ItemEntity;
-import com.bnpp.shop.domain.entity.OrderEntity;
+
 
 public interface ItemManagement {
 	
@@ -13,5 +13,7 @@ public interface ItemManagement {
 	Optional<ItemEntity> findItem(Integer id);
 	
 	void update(ItemEntity item);
+	
+	List<ItemEntity> findByAllItems();
 
 }
